@@ -10,15 +10,13 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 
-public class login extends AppCompatActivity {
+public class signUp extends AppCompatActivity {
 
     Button login, signUp;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-
+        setContentView(R.layout.activity_sign_up);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             Window window = getWindow();
             View decorView = window.getDecorView();
@@ -27,15 +25,15 @@ public class login extends AppCompatActivity {
             window.setStatusBarColor(Color.TRANSPARENT);
         }
 
-        signUp = findViewById(R.id.signUpHere);
-
-        signUp.setOnClickListener(new View.OnClickListener() {
+        login = findViewById(R.id.loginHere);
+        login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(login.this, signUp.class);
+                Intent intent = new Intent(signUp.this, login.class);
                 startActivity(intent);
             }
         });
+
 
     }
 }
