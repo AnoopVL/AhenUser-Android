@@ -10,15 +10,15 @@
     android:paddingLeft="20dp"
     android:paddingRight="20dp"
     >
+
     <ImageView
         android:id="@+id/dsLogo"
         android:layout_width="wrap_content"
-        android:layout_height="166dp"
-        android:layout_marginTop="40dp"
+        android:layout_height="135dp"
+        android:layout_marginTop="10dp"
         app:srcCompat="@drawable/dsimg_trans"
         tools:layout_editor_absoluteX="25dp"
-        tools:layout_editor_absoluteY="64dp"
-        />
+        tools:layout_editor_absoluteY="64dp" />
 
     <TextView
         android:id="@+id/welcomeBack"
@@ -36,8 +36,8 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:id="@+id/userName"
+            android:layout_height="wrap_content"
+            android:id="@+id/fullName"
             android:hint="Full name"
             app:boxStrokeColor="@color/black"
             android:outlineAmbientShadowColor="@color/black"
@@ -45,7 +45,7 @@
             style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox">
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:textColor="@color/black" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -53,14 +53,14 @@
             android:id="@+id/email"
             style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="wrap_content"
             android:hint="E-mail"
             android:outlineAmbientShadowColor="@color/black"
             app:boxStrokeColor="@color/black"
             app:hintTextColor="@color/black">
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:textColor="@color/black"
                 />
         </com.google.android.material.textfield.TextInputLayout>
@@ -69,14 +69,14 @@
             android:id="@+id/phone"
             style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="wrap_content"
             android:hint="Phone number"
             android:outlineAmbientShadowColor="@color/black"
             app:boxStrokeColor="@color/black"
             app:hintTextColor="@color/black">
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:textColor="@color/black"
                 android:inputType="number"
                 />
@@ -84,7 +84,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="wrap_content"
             android:id="@+id/password"
             android:hint="Password"
             app:passwordToggleEnabled="true"
@@ -95,7 +95,7 @@
             >
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:inputType="textPassword"
                 android:textColor="@color/black"
                 />
@@ -106,12 +106,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Sign-up"
             android:background="@drawable/button_state_list"
             android:backgroundTint="@color/black"
+            android:onClick="registerUser"
+            android:text="Sign-up"
             android:textColor="@color/white"
-            android:textSize="20dp"
-            />
+            android:textSize="20dp" />
 
         <Button
             android:id="@+id/loginHere"

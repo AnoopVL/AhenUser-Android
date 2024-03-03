@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.avl.ahenuser" />
+                  <option name="mobileSdkAppId" value="1:518680461041:android:1dcee2e3164fd1ecf3b350" />
+                  <option name="projectId" value="ahen-drivingschool" />
+                  <option name="projectNumber" value="518680461041" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

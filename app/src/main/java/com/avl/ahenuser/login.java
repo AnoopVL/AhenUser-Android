@@ -10,9 +10,12 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 
+import com.google.android.material.textfield.TextInputLayout;
+
 public class login extends AppCompatActivity {
 
-    Button login, signUp;
+    Button login, signUp, forgetPassword;
+    TextInputLayout Email, Password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +31,11 @@ public class login extends AppCompatActivity {
         }
 
         signUp = findViewById(R.id.signUpHere);
+        Email = findViewById(R.id.email);
+        Password = findViewById(R.id.Password);
+        login = findViewById(R.id.login);
+        forgetPassword = findViewById(R.id.forgetPassword);
+
 
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
