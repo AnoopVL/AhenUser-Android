@@ -54,6 +54,14 @@ public class signUp extends AppCompatActivity {
             public void onClick(View v) {
                 rootNode = FirebaseDatabase.getInstance();
                 reference = rootNode.getReference("users");
+
+                String regFullName = fullName.getEditText().getText().toString();
+                String regEmail = email.getEditText().getText().toString();
+                String regPhone = phone.getEditText().getText().toString();
+                String regPassword = password.getEditText().getText().toString();
+
+                UserHelper helperClass = new UserHelper();
+
                 reference.setValue("Test data");
             }
         });
