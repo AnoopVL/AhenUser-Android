@@ -28,14 +28,27 @@ public class login extends AppCompatActivity {
         }
 
         signUp = findViewById(R.id.signUpHere);
+        login = findViewById(R.id.login);
 
-        signUp.setOnClickListener(new View.OnClickListener() {
+
+        login.setOnClickListener(new View.OnClickListener()
+        {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(login.this, signUp.class);
-                startActivity(intent);
+                startActivity(new Intent(login.this, dashboard.class));
             }
         });
+
+
+
+       signUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               // Intent intent = new Intent(login.this, signUp.class);
+                startActivity(new Intent(login.this, signUp.class));
+            }
+        });
+
 
     }
 }
