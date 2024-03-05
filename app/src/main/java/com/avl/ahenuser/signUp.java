@@ -19,7 +19,6 @@ public class signUp extends AppCompatActivity {
 
     FirebaseDatabase rootNode;
     DatabaseReference reference;
-
     Button login, signUp;
     TextInputLayout fullName, email, phone, password;
 

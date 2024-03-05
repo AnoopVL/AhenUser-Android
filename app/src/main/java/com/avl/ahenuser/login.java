@@ -1,5 +1,6 @@
 package com.avl.ahenuser;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -11,12 +12,18 @@ import android.view.Window;
 import android.widget.Button;
 
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 public class login extends AppCompatActivity {
-
+    FirebaseDatabase rootNode;
+    DatabaseReference reference;
     Button login, signUp, forgetPassword;
     TextInputLayout Phone, Password;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,16 +43,18 @@ public class login extends AppCompatActivity {
         login = findViewById(R.id.login);
         forgetPassword = findViewById(R.id.forgetPassword);
 
-        String regPhone = Phone.getEditText().getText().toString();
-        String regPassword = Password.getEditText().getText().toString();
+        String userEnteredPhone = Phone.getEditText().getText().toString();
+        String userEnteredPassword = Password.getEditText().getText().toString();
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(login.this, dashboard.class);
-                startActivity(intent);
+                if(!validatePhoneNo() | !validatePassword()){
+                    return;
+                }else{
+                    isUser();
+                }
             }
         });
-
 
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,4 +65,70 @@ public class login extends AppCompatActivity {
         });
 
     }
+    private Boolean validatePhoneNo() {
+        String val = Phone.getEditText().getText().toString();
+        if (val.isEmpty()) {
+            Phone.setError("Field cannot be empty");
+            return false;
+        } else {
+            Phone.setError(null);
+            Phone.setErrorEnabled(false);
+            return true;
+        }
+    }
+    private Boolean validatePassword() {
+        String val = Password.getEditText().getText().toString();
+        if (val.isEmpty()) {
+            Password.setError("Field cannot be empty");
+            return false;
+        }
+         else {
+            Password.setError(null);
+            Password.setErrorEnabled(false);
+            return true;
+        }
+    }
+    private void isUser(){
+        String userEnteredPhone = Phone.getEditText().getText().toString();
+        String userEnteredPassword = Password.getEditText().getText().toString();
+
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
+        Query checkPhone = reference.orderByChild("phone").equalTo(userEnteredPhone);
+
+        checkPhone.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    Phone.setError(null);
+                    Phone.setErrorEnabled(false);
+                    String passwordFromDB = snapshot.child(userEnteredPhone).child("password").getValue(String.class);
+                    if(passwordFromDB.equals(userEnteredPassword)){
+                        Password.setError(null);
+                        Password.setErrorEnabled(false);
+
+                        String fullNameFromDB = snapshot.child(userEnteredPhone).child("name").getValue(String.class);
+                        String emailFromDB = snapshot.child(userEnteredPhone).child("email").getValue(String.class);
+                        String phoneFromDB = snapshot.child(userEnteredPhone).child("phone").getValue(String.class);
+
+                        Intent intent = new Intent(login.this, dashboard.class);
+                        startActivity(intent);
+                    }
+                    else {
+                        Password.setError("Wrong Password");
+                        Password.requestFocus();
+                    }
+                }
+                else {
+                    Phone.setError("Enter valid phone number");
+                    Phone.requestFocus();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
 }
