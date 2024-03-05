@@ -15,7 +15,7 @@ import com.google.android.material.textfield.TextInputLayout;
 public class login extends AppCompatActivity {
 
     Button login, signUp, forgetPassword;
-    TextInputLayout Email, Password;
+    TextInputLayout Phone, Password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,10 +31,20 @@ public class login extends AppCompatActivity {
         }
 
         signUp = findViewById(R.id.signUpHere);
-        Email = findViewById(R.id.email);
+        Phone = findViewById(R.id.phoneNo);
         Password = findViewById(R.id.Password);
         login = findViewById(R.id.login);
         forgetPassword = findViewById(R.id.forgetPassword);
+
+        String regPhone = Phone.getEditText().getText().toString();
+        String regPassword = Password.getEditText().getText().toString();
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(login.this, dashboard.class);
+                startActivity(intent);
+            }
+        });
 
 
         signUp.setOnClickListener(new View.OnClickListener() {
