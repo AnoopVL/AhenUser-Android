@@ -109,17 +109,9 @@
             android:textColor="@color/black"
             android:layout_gravity="center"
             />
-
-
-
-
+        
 
     </LinearLayout>
-
-
-
-
-
 
 
 </LinearLayout>

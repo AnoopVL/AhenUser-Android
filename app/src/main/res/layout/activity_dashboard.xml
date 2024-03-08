@@ -25,7 +25,7 @@
         <!-- Your main content goes here -->
 
 
-        <EditText
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
@@ -35,7 +35,7 @@
             android:textSize="22sp"
             android:textStyle="italic" />
 
-        <EditText
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="OUR SERVICES...."
@@ -62,10 +62,10 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <EditText
+                <TextView
                     android:id="@+id/text6"
-                    android:layout_width="174dp"
-                    android:layout_height="90dp"
+                    android:layout_width="143dp"
+                    android:layout_height="70dp"
                     android:layout_marginStart="0sp"
                     android:text="Search For Driving Schools Near You..."
                     android:textColor="@color/white"
@@ -115,7 +115,7 @@
                 android:orientation="vertical">
 
 
-                <EditText
+                <TextView
                     android:id="@+id/text3"
                     android:layout_width="171dp"
                     android:layout_height="81dp"
@@ -134,7 +134,6 @@
                     android:textColor="@color/white"
                     android:textSize="10sp"
                     android:textStyle="bold"
-                    android:layout_marginLeft="10dp"
                     tools:ignore="SmallSp" />
 
 
@@ -154,10 +153,10 @@
                 android:layout_marginLeft="15dp"
                 android:orientation="vertical">
 
-                <EditText
+                <TextView
                     android:id="@+id/text5"
                     android:layout_width="185dp"
-                    android:layout_height="90dp"
+                    android:layout_height="70dp"
                     android:layout_marginStart="10sp"
                     android:text="Create, Renew ,Update Your License Online..."
                     android:textColor="@color/white"
@@ -169,7 +168,7 @@
                     android:id="@+id/book2"
                     android:layout_width="157dp"
                     android:layout_height="48dp"
-                    android:layout_marginStart="24dp"
+                    android:layout_marginStart="12dp"
                     android:text="Start Now"
                     android:textColor="@color/white"
                     android:textSize="10sp"
@@ -207,10 +206,10 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <EditText
+                <TextView
                     android:id="@+id/text4"
-                    android:layout_width="174dp"
-                    android:layout_height="90dp"
+                    android:layout_width="158dp"
+                    android:layout_height="70dp"
                     android:layout_marginStart="0sp"
                     android:text="Easy Steps To Insure Your Vehicle. Insure Now!"
                     android:textColor="@color/white"
@@ -254,3 +253,4 @@
 
 
 </RelativeLayout>
+
