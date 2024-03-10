@@ -1,5 +1,6 @@
 package com.avl.ahenuser;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,13 +8,20 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link HomeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements View.OnClickListener{
+
+    private Button searchNowButton;
+    private Button book1Button;
+    private Button book2Button;
+    private Button book3Button;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -59,6 +67,36 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
+
+        // Find views by their IDs
+        searchNowButton = view.findViewById(R.id.search_now);
+        book1Button = view.findViewById(R.id.book1);
+        book2Button = view.findViewById(R.id.book2);
+        book3Button = view.findViewById(R.id.book3);
+
+        // Set click listeners for the buttons
+        searchNowButton.setOnClickListener(this);
+        book1Button.setOnClickListener(this);
+        book2Button.setOnClickListener(this);
+        book3Button.setOnClickListener(this);
+
+        return view;
+    }
+
+    @Override
+    public void onClick(View v) {
+        // Handle button clicks
+        if (v.getId() == R.id.search_now) {
+            Intent intent = new Intent(getActivity(), MapsActivity.class);
+            startActivity(intent);
+        } else if (v.getId() == R.id.book1) {
+
+            Toast.makeText(getActivity(), "Feature coming soon!!", Toast.LENGTH_SHORT).show();
+        } else if (v.getId() == R.id.book2) {
+
+        } else if (v.getId() == R.id.book3) {
+            Toast.makeText(getActivity(), "Feature coming soon!!", Toast.LENGTH_SHORT).show();
+        }
     }
 }
