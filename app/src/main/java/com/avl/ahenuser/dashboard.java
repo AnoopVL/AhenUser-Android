@@ -22,7 +22,23 @@ public class dashboard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityDashboardBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        replaceFragment(new  HomeFragment());
+//        replaceFragment(new  HomeFragment());
+        Bundle extras = getIntent().getExtras();
+        if (extras != null && extras.containsKey("fullName") && extras.containsKey("email")
+                && extras.containsKey("phone") && extras.containsKey("password")) {
+            String fullName = extras.getString("fullName");
+            String email = extras.getString("email");
+            String phone = extras.getString("phone");
+            String password = extras.getString("password");
+            // Pass user data to ProfileFragment
+            ProfileFragment profileFragment = ProfileFragment.newInstance(fullName, email, phone, password);
+            replaceFragment(new HomeFragment());
+//            replaceFragment(profileFragment);
+        } else {
+            // If no user data, load HomeFragment by default
+            replaceFragment(new HomeFragment());
+        }
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
             ((Window) window).getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
@@ -44,6 +60,4 @@ public class dashboard extends AppCompatActivity {
         fragmentTransaction.replace(R.id.frameLayout, fragment);
         fragmentTransaction.commit();
     }
-
-
 }

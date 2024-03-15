@@ -19,7 +19,7 @@ import android.widget.Toast;
 public class HomeFragment extends Fragment implements View.OnClickListener{
 
     private Button searchNowButton;
-    private Button book1Button;
+    private Button findNowButton;
     private Button book2Button;
     private Button book3Button;
 
@@ -71,13 +71,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 
         // Find views by their IDs
         searchNowButton = view.findViewById(R.id.search_now);
-        book1Button = view.findViewById(R.id.book1);
+        findNowButton = view.findViewById(R.id.findNow);
         book2Button = view.findViewById(R.id.book2);
         book3Button = view.findViewById(R.id.book3);
 
         // Set click listeners for the buttons
         searchNowButton.setOnClickListener(this);
-        book1Button.setOnClickListener(this);
+        findNowButton.setOnClickListener(this);
         book2Button.setOnClickListener(this);
         book3Button.setOnClickListener(this);
 
@@ -90,7 +90,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         if (v.getId() == R.id.search_now) {
             Intent intent = new Intent(getActivity(), MapsActivity.class);
             startActivity(intent);
-        } else if (v.getId() == R.id.book1) {
+        } else if (v.getId() == R.id.findNow) {
 
             Toast.makeText(getActivity(), "Feature coming soon!!", Toast.LENGTH_SHORT).show();
         } else if (v.getId() == R.id.book2) {

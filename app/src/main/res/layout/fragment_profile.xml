@@ -51,12 +51,18 @@
 
             <Button
                 android:id="@+id/sign_out"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:text="Sign Out"
+                android:layout_width="135dp"
+                android:layout_height="50dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="236dp"
+                android:layout_marginTop="21dp"
+                android:layout_marginEnd="20dp"
+                android:backgroundTint="@color/white"
                 android:fontFamily="@font/amiko"
-                android:layout_marginStart="230dp"
-                />
+                android:text="Sign Out"
+                android:textColor="@color/black" />
 
         </RelativeLayout>
 
@@ -172,6 +178,7 @@
             android:padding="20dp">
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/full_name_edittext"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
@@ -182,12 +189,13 @@
                     android:layout_height="wrap_content"
                     android:drawableLeft="@drawable/username_small_icon"
                     android:drawablePadding="10dp"
-                    android:text="Shraddha Kapoor" />
+                     />
 
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/email_edittext"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
@@ -198,12 +206,13 @@
                     android:layout_height="wrap_content"
                     android:drawableLeft="@drawable/email_small_icon"
                     android:drawablePadding="10dp"
-                    android:text="shraddhakapoor@gmail.com" />
+                     />
 
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/phone_edittext"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
@@ -214,7 +223,7 @@
                     android:layout_height="wrap_content"
                     android:drawableLeft="@drawable/phn_small_icon"
                     android:drawablePadding="10dp"
-                    android:text="+91 123-456-7890" />
+                     />
 
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -223,25 +232,28 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:hint="Password">
-
+                android:hint="Password"
+                app:passwordToggleEnabled="true"
+                android:id="@+id/password_edittext"
+                >
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableLeft="@drawable/password_small_icon"
                     android:drawablePadding="10dp"
-                    android:text="ShraddhaK#123" />
+                    android:inputType="textPassword"
+                     />
 
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
+                android:id="@+id/updateButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#6750A3"
                 android:fontFamily="@font/bungee"
                 android:text="Update" />
-
 
         </LinearLayout>
 

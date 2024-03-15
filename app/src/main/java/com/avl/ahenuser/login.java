@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DataSnapshot;
@@ -49,6 +50,7 @@ public class login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(!validatePhoneNo() | !validatePassword()){
+                    Toast.makeText(login.this, "Invaild Phone or Password", Toast.LENGTH_SHORT).show();
                     return;
                 }else{
                     isUser();
@@ -110,12 +112,19 @@ public class login extends AppCompatActivity {
                         String emailFromDB = snapshot.child(userEnteredPhone).child("email").getValue(String.class);
                         String phoneFromDB = snapshot.child(userEnteredPhone).child("phone").getValue(String.class);
 
+//                        Intent dataIntent = new Intent(login.this, dashboard.class);
+//                        dataIntent.putExtra("fullName", fullNameFromDB);
+//                        dataIntent.putExtra("email", emailFromDB);
+//                        dataIntent.putExtra("phone", phoneFromDB);
+//                        dataIntent.putExtra("password", passwordFromDB);
+//                        startActivity(dataIntent);
                         Intent intent = new Intent(login.this, dashboard.class);
                         startActivity(intent);
                     }
                     else {
                         Password.setError("Wrong Password");
                         Password.requestFocus();
+                        Toast.makeText(login.this, "Wrong Password!!", Toast.LENGTH_SHORT).show();
                     }
                 }
                 else {
@@ -123,7 +132,6 @@ public class login extends AppCompatActivity {
                     Phone.requestFocus();
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 

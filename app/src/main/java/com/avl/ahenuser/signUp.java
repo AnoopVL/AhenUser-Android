@@ -40,14 +40,6 @@ public class signUp extends AppCompatActivity {
         phone = findViewById(R.id.phone);
         password = findViewById(R.id.password);
 
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(signUp.this, login.class);
-                startActivity(intent);
-            }
-        });
-
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,6 +59,14 @@ public class signUp extends AppCompatActivity {
                 UserHelper helperClass = new UserHelper(regFullName, regEmail, regPhone, regPassword);
                 reference.child(regPhone).setValue(helperClass);
 
+                Intent intent = new Intent(signUp.this, login.class);
+                startActivity(intent);
+            }
+        });
+
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 Intent intent = new Intent(signUp.this, login.class);
                 startActivity(intent);
             }

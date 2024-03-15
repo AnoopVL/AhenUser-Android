@@ -120,17 +120,17 @@
                         android:layout_width="171dp"
                         android:layout_height="81dp"
                         android:layout_marginStart="0sp"
-                        android:text="Book Your Driving Session with Ease And Smartly !"
+                        android:text="Find Listed Driving Schools..."
                         android:textColor="@color/white"
                         android:textSize="15sp"
                         android:textStyle="bold"
                         tools:ignore="HardcodedText,SmallSp" />
 
                     <Button
-                        android:id="@+id/book1"
+                        android:id="@+id/findNow"
                         android:layout_width="157dp"
                         android:layout_height="48dp"
-                        android:text="Book Now"
+                        android:text="Find Now"
                         android:textColor="@color/white"
                         android:textSize="10sp"
                         android:textStyle="bold"
