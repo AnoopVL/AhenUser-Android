@@ -32,8 +32,7 @@ public class dashboard extends AppCompatActivity {
             String password = extras.getString("password");
             // Pass user data to ProfileFragment
             ProfileFragment profileFragment = ProfileFragment.newInstance(fullName, email, phone, password);
-            replaceFragment(new HomeFragment());
-//            replaceFragment(profileFragment);
+            replaceFragment(profileFragment);
         } else {
             // If no user data, load HomeFragment by default
             replaceFragment(new HomeFragment());

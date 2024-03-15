@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -20,14 +21,19 @@ import com.google.android.material.textfield.TextInputEditText;
  */
 public class ProfileFragment extends Fragment {
 
-    private static TextView fullNameTextView;
-    private static TextView emailTextView;
-    private static TextView phoneTextView;
-    private static TextInputEditText fullNameEditText;
-    private static TextInputEditText emailEditText;
-    private static TextInputEditText phoneEditText;
-    private static TextInputEditText passwordEditText;
-    private static Button updateButton;
+    private TextView fullNameTextView;
+//    private TextView email_TextView;
+    private TextView phone_TextView;
+
+    private TextInputLayout fullName_TextInputLayout;
+    private TextInputLayout email_TextInputLayout;
+    private TextInputLayout phone_TextInputLayout;
+    private TextInputLayout password_TextInputLayout;
+    private TextInputEditText fullNameEditText;
+    private TextInputEditText emailEditText;
+    private TextInputEditText phoneEditText;
+    private TextInputEditText passwordEditText;
+    private Button updateButton;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -53,14 +59,26 @@ public class ProfileFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        fullNameEditText = view.findViewById(R.id.full_name_edittext);
-        emailEditText = view.findViewById(R.id.email_edittext);
-        phoneEditText = view.findViewById(R.id.phone_edittext);
-        passwordEditText = view.findViewById(R.id.password_edittext);
+//        fullNameEditText = view.findViewById(R.id.full_name_edittext);
+//        emailEditText = view.findViewById(R.id.email_edittext);
+//        phoneEditText = view.findViewById(R.id.phone_edittext);
+//        passwordEditText = view.findViewById(R.id.password_edittext);
+//        updateButton = view.findViewById(R.id.updateButton);
+//        fullNameTextView = view.findViewById(R.id.fullName_textView);
+//        phone_TextView = view.findViewById(R.id.phone_textView);
+
+        fullName_TextInputLayout = view.findViewById(R.id.fullName_TextInputLayout);
+        email_TextInputLayout = view.findViewById(R.id.email_TextInputLayout);
+        phone_TextInputLayout = view.findViewById(R.id.phone_TextInputLayout);
+        password_TextInputLayout = view.findViewById(R.id.password_TextInputLayout);
+        fullNameTextView = view.findViewById(R.id.fullName_textView);
+        phone_TextView = view.findViewById(R.id.phone_textView);
         updateButton = view.findViewById(R.id.updateButton);
-//        profileImageView = view.findViewById(R.id.profile_img);
-//        fullNameTextView = view.findViewById(R.id.full_name);
-//        userNameTextView = view.findViewById(R.id.user_name);
+
+        fullNameEditText = (TextInputEditText) fullName_TextInputLayout.getEditText();
+        emailEditText = (TextInputEditText) email_TextInputLayout.getEditText();
+        phoneEditText = (TextInputEditText) phone_TextInputLayout.getEditText();
+        passwordEditText = (TextInputEditText) password_TextInputLayout.getEditText();
 
         // Extracting data from arguments
         Bundle args = getArguments();
@@ -70,9 +88,11 @@ public class ProfileFragment extends Fragment {
             String phone = args.getString("phone");
             String password = args.getString("password");
 
+            fullNameTextView.setText(fullName);
             fullNameEditText.setText(fullName);
             emailEditText.setText(email);
             phoneEditText.setText(phone);
+            phone_TextView.setText(phone);
             passwordEditText.setText(password);
         }
         updateButton.setOnClickListener(new View.OnClickListener() {
@@ -81,7 +101,6 @@ public class ProfileFragment extends Fragment {
                 Toast.makeText(getActivity(), "Sorry, try again later!!", Toast.LENGTH_SHORT).show();
             }
         });
-
         return view;
     }
 }
