@@ -20,11 +20,8 @@ import com.google.android.material.textfield.TextInputLayout;
  * create an instance of this fragment.
  */
 public class ProfileFragment extends Fragment {
-
     private TextView fullNameTextView;
-//    private TextView email_TextView;
     private TextView phone_TextView;
-
     private TextInputLayout fullName_TextInputLayout;
     private TextInputLayout email_TextInputLayout;
     private TextInputLayout phone_TextInputLayout;
@@ -38,17 +35,23 @@ public class ProfileFragment extends Fragment {
     public ProfileFragment() {
         // Required empty public constructor
     }
-
-    public static ProfileFragment newInstance(String fullName, String email, String phone, String password) {
-        ProfileFragment fragment = new ProfileFragment();
-        Bundle args = new Bundle();
-        args.putString("fullName", fullName);
-        args.putString("email", email);
-        args.putString("phone", phone);
-        args.putString("password", password);
-        fragment.setArguments(args);
-        return fragment;
-    }
+//    public static ProfileFragment newInstance(String fullName, String email, String phone, String password) {
+//        ProfileFragment fragment = new ProfileFragment();
+//        Bundle args = new Bundle();
+//        args.putString("fullName", fullName);
+//        args.putString("email", email);
+//        args.putString("phone", phone);
+//        args.putString("password", password);
+//        fragment.setArguments(args);
+//        return fragment;
+//    }
+public static ProfileFragment newInstance(UserHelper userData) {
+    ProfileFragment fragment = new ProfileFragment();
+    Bundle args = new Bundle();
+    args.putParcelable("userData", userData);  // Assuming UserData implements Parcelable
+    fragment.setArguments(args);
+    return fragment;
+}
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,14 +61,6 @@ public class ProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
-
-//        fullNameEditText = view.findViewById(R.id.full_name_edittext);
-//        emailEditText = view.findViewById(R.id.email_edittext);
-//        phoneEditText = view.findViewById(R.id.phone_edittext);
-//        passwordEditText = view.findViewById(R.id.password_edittext);
-//        updateButton = view.findViewById(R.id.updateButton);
-//        fullNameTextView = view.findViewById(R.id.fullName_textView);
-//        phone_TextView = view.findViewById(R.id.phone_textView);
 
         fullName_TextInputLayout = view.findViewById(R.id.fullName_TextInputLayout);
         email_TextInputLayout = view.findViewById(R.id.email_TextInputLayout);

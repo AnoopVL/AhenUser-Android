@@ -1,6 +1,11 @@
 package com.avl.ahenuser;
 
-public class UserHelper {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
+public class UserHelper implements Parcelable {
     String name, email, phone, password;
 
     public UserHelper() {
@@ -44,5 +49,15 @@ public class UserHelper {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+
     }
 }
