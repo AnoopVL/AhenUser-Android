@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-public class UserHelper implements Parcelable {
+public class UserHelper {
     String name, email, phone, password;
 
     public UserHelper() {
@@ -51,13 +51,13 @@ public class UserHelper implements Parcelable {
         this.password = password;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(@NonNull Parcel dest, int flags) {
-
-    }
+//    @Override
+//    public int describeContents() {
+//        return 0;
+//    }
+//
+//    @Override
+//    public void writeToParcel(@NonNull Parcel dest, int flags) {
+//
+//    }
 }
