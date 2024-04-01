@@ -1,5 +1,9 @@
 package com.avl.ahenuser;
 
+import static android.content.Context.MODE_PRIVATE;
+
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -31,6 +35,8 @@ public class ProfileFragment extends Fragment {
     private TextInputEditText phoneEditText;
     private TextInputEditText passwordEditText;
     private Button updateButton;
+    private Button signOut;
+    private SharedPreferences sharedPreferences;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -69,11 +75,26 @@ public static ProfileFragment newInstance(UserHelper userData) {
         fullNameTextView = view.findViewById(R.id.fullName_textView);
         phone_TextView = view.findViewById(R.id.phone_textView);
         updateButton = view.findViewById(R.id.updateButton);
+        signOut = view.findViewById(R.id.sign_out);
 
         fullNameEditText = (TextInputEditText) fullName_TextInputLayout.getEditText();
         emailEditText = (TextInputEditText) email_TextInputLayout.getEditText();
         phoneEditText = (TextInputEditText) phone_TextInputLayout.getEditText();
         passwordEditText = (TextInputEditText) password_TextInputLayout.getEditText();
+
+        signOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Clear saved phone number from SharedPreferences
+                SharedPreferences sharedPreferences = getActivity().getSharedPreferences("userLogin", MODE_PRIVATE);
+                sharedPreferences.edit().remove("phoneNumber").apply();
+
+                // Go back to login screen
+                Intent newIntent = new Intent(getActivity(), login.class);
+                startActivity(newIntent);
+                getActivity().finish();
+            }
+        });
 
         // Extracting data from arguments
         Bundle args = getArguments();

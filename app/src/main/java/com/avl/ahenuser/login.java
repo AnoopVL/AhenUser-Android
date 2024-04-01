@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -25,6 +26,8 @@ public class login extends AppCompatActivity {
     DatabaseReference reference;
     Button login, signUp, forgetPassword;
     TextInputLayout Phone, Password;
+
+    private SharedPreferences sharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,6 +93,16 @@ public class login extends AppCompatActivity {
             return true;
         }
     }
+
+    private void goToDashboard(String phone) {
+        // Save phone number to SharedPreferences
+        sharedPreferences = getSharedPreferences("userLogin", MODE_PRIVATE);
+        sharedPreferences.edit().putString("phoneNumber", phone).apply();
+
+        Intent intent = new Intent(login.this, dashboard.class);
+        startActivity(intent);
+        finish();
+    }
     private void isUser(){
         String userEnteredPhone = Phone.getEditText().getText().toString();
         String userEnteredPassword = Password.getEditText().getText().toString();
@@ -112,12 +125,14 @@ public class login extends AppCompatActivity {
                         String emailFromDB = snapshot.child(userEnteredPhone).child("email").getValue(String.class);
                         String phoneFromDB = snapshot.child(userEnteredPhone).child("phone").getValue(String.class);
 
+                        goToDashboard(userEnteredPhone);
+
                         Intent dataIntent = new Intent(login.this, dashboard.class);
-                        dataIntent.putExtra("fullName", fullNameFromDB);
-                        dataIntent.putExtra("email", emailFromDB);
-                        dataIntent.putExtra("phone", phoneFromDB);
-                        dataIntent.putExtra("password", passwordFromDB);
-                        dataIntent.putExtra("fragmentToLoad", "home");
+//                        dataIntent.putExtra("fullName", fullNameFromDB);
+//                        dataIntent.putExtra("email", emailFromDB);
+//                        dataIntent.putExtra("phone", phoneFromDB);
+//                        dataIntent.putExtra("password", passwordFromDB);
+//                        dataIntent.putExtra("fragmentToLoad", "home");
                         startActivity(dataIntent);
 //                        Intent intent = new Intent(login.this, dashboard.class);
 //                        startActivity(intent);
