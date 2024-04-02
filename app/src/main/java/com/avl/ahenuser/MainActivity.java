@@ -41,15 +41,6 @@ public class MainActivity extends AppCompatActivity {
         // Check if user is logged in (has a phone number saved in SharedPreferences)
         boolean isLoggedIn = sharedPreferences.contains("phoneNumber");
 
-        if (isLoggedIn) {
-            // User is logged in, directly go to dashboard
-            Intent intent = new Intent(MainActivity.this, dashboard.class);
-            startActivity(intent);
-            finish();
-        } else {
-            // User is not logged in, show splash screen and login activity
-            // ... (rest of your existing code for splash screen and login intent)
-        }
 
         topAnim = AnimationUtils.loadAnimation(this, R.anim.top_animation);
         bottomAnim = AnimationUtils.loadAnimation(this, R.anim.bottom_animation);
@@ -65,9 +56,18 @@ public class MainActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(MainActivity.this, login.class);
-                startActivity(intent);
-                finish();
+                if (isLoggedIn) {
+                    // User is logged in, directly go to dashboard
+                    Intent intent = new Intent(MainActivity.this, dashboard.class);
+                    startActivity(intent);
+                    finish();
+                } else {
+                    // User is not logged in, show splash screen and login activity
+                    // ... (rest of your existing code for splash screen and login intent)
+                    Intent intent = new Intent(MainActivity.this, login.class);
+                    startActivity(intent);
+                    finish();
+                }
             }
         }, SPLASH_SCREEN);
     }

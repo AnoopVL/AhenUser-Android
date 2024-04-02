@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,7 +55,7 @@ public class ProfileFragment extends Fragment {
 public static ProfileFragment newInstance(UserHelper userData) {
     ProfileFragment fragment = new ProfileFragment();
     Bundle args = new Bundle();
-    args.putParcelable("userData", userData);  // Assuming UserData implements Parcelable
+    args.putParcelable("userData", (Parcelable) userData);  // Assuming UserData implements Parcelable
     fragment.setArguments(args);
     return fragment;
 }
