@@ -124,7 +124,6 @@ public class login extends AppCompatActivity {
                         String fullNameFromDB = snapshot.child(userEnteredPhone).child("name").getValue(String.class);
                         String emailFromDB = snapshot.child(userEnteredPhone).child("email").getValue(String.class);
                         String phoneFromDB = snapshot.child(userEnteredPhone).child("phone").getValue(String.class);
-
                         goToDashboard(userEnteredPhone);
 
 //                        Intent dataIntent = new Intent(login.this, dashboard.class);
