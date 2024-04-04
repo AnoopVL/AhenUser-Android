@@ -9,7 +9,6 @@ public class UserHelper {
     String name, email, phone, password;
 
     public UserHelper() {
-
     }
 
     public UserHelper(String name, String email, String phone, String password) {
