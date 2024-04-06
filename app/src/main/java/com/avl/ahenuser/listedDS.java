@@ -8,7 +8,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class listedDS extends AppCompatActivity {
+
+    DatabaseReference drivingSchoolRef = FirebaseDatabase.getInstance().getReference().child("drivingSchools");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
