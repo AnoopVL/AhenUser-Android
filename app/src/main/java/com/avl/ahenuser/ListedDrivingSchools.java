@@ -1,25 +1,25 @@
 package com.avl.ahenuser;
 
 public class ListedDrivingSchools {
-    private String name;
+    private String dsName;
     private String address;
-    private String phoneNumber;
+    private String phone;
     // You can add more fields as required
 
     public ListedDrivingSchools() {
         // Default constructor
     }
 
-    public ListedDrivingSchools(String name, String address, String phoneNumber) {
-        this.name = name;
+    public ListedDrivingSchools(String dsName, String address, String phone) {
+        this.dsName = dsName;
         this.address = address;
-        this.phoneNumber = phoneNumber;
+        this.phone = phone;
     }
 
-    public String getName() { return name; }
+    public String getName() { return dsName; }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String dsName) {
+        this.dsName = dsName;
     }
 
     public String getAddress() {
@@ -31,11 +31,11 @@ public class ListedDrivingSchools {
     }
 
     public String getPhoneNumber() {
-        return phoneNumber;
+        return phone;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setPhoneNumber(String phone) {
+        this.phone = phone;
     }
 }
 

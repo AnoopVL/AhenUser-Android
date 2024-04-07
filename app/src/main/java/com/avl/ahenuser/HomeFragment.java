@@ -91,8 +91,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
             Intent intent = new Intent(getActivity(), MapsActivity.class);
             startActivity(intent);
         } else if (v.getId() == R.id.findNow) {
+            Intent intent = new Intent(getActivity(), listedDS.class);
+            startActivity(intent);
 
-            Toast.makeText(getActivity(), "Feature coming soon!!", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getActivity(), "Feature coming soon!!", Toast.LENGTH_SHORT).show();
         } else if (v.getId() == R.id.book2) {
 
         } else if (v.getId() == R.id.book3) {

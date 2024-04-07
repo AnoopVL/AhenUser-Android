@@ -2,26 +2,33 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingTop="40dp"
+    >
 
     <TextView
         android:id="@+id/drivingSchoolName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:textSize="24sp"
         android:textStyle="bold"
+        android:paddingLeft="8dp"
         android:text="Driving School Name" />
 
     <TextView
         android:id="@+id/drivingSchoolAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:paddingLeft="8dp"
         android:text="Driving School Address" />
 
     <TextView
         android:id="@+id/drivingSchoolPhone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:paddingLeft="8dp"
         android:text="Driving School Phone Number" />
 
 </LinearLayout>
