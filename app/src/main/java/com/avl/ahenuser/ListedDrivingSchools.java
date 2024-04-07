@@ -4,21 +4,25 @@ public class ListedDrivingSchools {
     private String dsName;
     private String address;
     private String phone;
-    // You can add more fields as required
-
+    private String email;
+    private String name;
     public ListedDrivingSchools() {
         // Default constructor
     }
 
-    public ListedDrivingSchools(String dsName, String address, String phone) {
-        this.dsName = dsName;
-        this.address = address;
-        this.phone = phone;
+//    public ListedDrivingSchools(String dsName, String address, String phone, String email, String name) {
+//        this.dsName = dsName;
+//        this.address = address;
+//        this.phone = phone;
+//        this.email = email;
+//        this.name = name;
+//    }
+
+    public String getDsName() {
+        return dsName;
     }
 
-    public String getName() { return dsName; }
-
-    public void setName(String dsName) {
+    public void setDsName(String dsName) {
         this.dsName = dsName;
     }
 
@@ -30,12 +34,28 @@ public class ListedDrivingSchools {
         this.address = address;
     }
 
-    public String getPhoneNumber() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhoneNumber(String phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
 

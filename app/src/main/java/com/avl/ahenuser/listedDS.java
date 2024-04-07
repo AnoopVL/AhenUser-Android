@@ -35,26 +35,26 @@ public class listedDS extends AppCompatActivity {
             window.setStatusBarColor(Color.TRANSPARENT);
         }
 
-        drivingSchoolName = findViewById(R.id.drivingSchoolName);
-        drivingSchoolAddress = findViewById(R.id.drivingSchoolAddress);
-        drivingSchoolPhone = findViewById(R.id.drivingSchoolPhone);
-        drivingSchoolRef = FirebaseDatabase.getInstance().getReference().child("drivingSchool");
-        drivingSchoolRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
-                    ListedDrivingSchools listedDrivingSchools = snapshot.getValue(ListedDrivingSchools.class);
-                    drivingSchoolName.setText(listedDrivingSchools.getName());
-                    drivingSchoolAddress.setText(listedDrivingSchools.getAddress());
-                    drivingSchoolPhone.setText(listedDrivingSchools.getPhoneNumber());
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
+//        drivingSchoolName = findViewById(R.id.drivingSchoolName);
+//        drivingSchoolAddress = findViewById(R.id.drivingSchoolAddress);
+//        drivingSchoolPhone = findViewById(R.id.drivingSchoolPhone);
+//        drivingSchoolRef = FirebaseDatabase.getInstance().getReference().child("drivingSchool");
+//        drivingSchoolRef.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+//                    ListedDrivingSchools listedDrivingSchools = snapshot.getValue(ListedDrivingSchools.class);
+//                    drivingSchoolName.setText(listedDrivingSchools.getName());
+//                    drivingSchoolAddress.setText(listedDrivingSchools.getAddress());
+//                    drivingSchoolPhone.setText(listedDrivingSchools.getPhoneNumber());
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
 
     }
 }
