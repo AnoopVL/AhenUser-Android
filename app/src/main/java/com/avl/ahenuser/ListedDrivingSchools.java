@@ -1,22 +1,22 @@
-public class listedDrivingSchool {
+package com.avl.ahenuser;
+
+public class ListedDrivingSchools {
     private String name;
     private String address;
     private String phoneNumber;
     // You can add more fields as required
 
-    public listedDrivingSchool() {
+    public ListedDrivingSchools() {
         // Default constructor
     }
 
-    public listedDrivingSchool(String name, String address, String phoneNumber) {
+    public ListedDrivingSchools(String name, String address, String phoneNumber) {
         this.name = name;
         this.address = address;
         this.phoneNumber = phoneNumber;
     }
 
-    public String getName() {
-        return name;
-    }
+    public String getName() { return name; }
 
     public void setName(String name) {
         this.name = name;
@@ -38,3 +38,4 @@ public class listedDrivingSchool {
         this.phoneNumber = phoneNumber;
     }
 }
+
