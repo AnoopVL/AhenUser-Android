@@ -2,6 +2,8 @@ package com.avl.ahenuser;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.graphics.Color;
 import android.os.Build;
@@ -16,12 +18,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 public class listedDS extends AppCompatActivity {
 
-    private DatabaseReference drivingSchoolRef;
-    private TextView drivingSchoolName;
-    private TextView drivingSchoolAddress;
-    private TextView drivingSchoolPhone;
+    RecyclerView recyclerView;
+    DatabaseReference databaseReference;
+    listedDsAdapter listedDsAdapter;
+    ArrayList<ListedDrivingSchools> list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,26 +39,29 @@ public class listedDS extends AppCompatActivity {
             window.setStatusBarColor(Color.TRANSPARENT);
         }
 
-//        drivingSchoolName = findViewById(R.id.drivingSchoolName);
-//        drivingSchoolAddress = findViewById(R.id.drivingSchoolAddress);
-//        drivingSchoolPhone = findViewById(R.id.drivingSchoolPhone);
-//        drivingSchoolRef = FirebaseDatabase.getInstance().getReference().child("drivingSchool");
-//        drivingSchoolRef.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
-//                    ListedDrivingSchools listedDrivingSchools = snapshot.getValue(ListedDrivingSchools.class);
-//                    drivingSchoolName.setText(listedDrivingSchools.getName());
-//                    drivingSchoolAddress.setText(listedDrivingSchools.getAddress());
-//                    drivingSchoolPhone.setText(listedDrivingSchools.getPhoneNumber());
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
+        recyclerView = findViewById(R.id.listedDS);
+        databaseReference = FirebaseDatabase.getInstance().getReference("drivingSchool");
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        list = new ArrayList<>();
+        listedDsAdapter = new listedDsAdapter(this, list);
+        recyclerView.setAdapter(listedDsAdapter);
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    ListedDrivingSchools listedDrivingSchools = dataSnapshot.getValue(ListedDrivingSchools.class);
+                    list.add(listedDrivingSchools);
+                }
+                listedDsAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
     }
 }
