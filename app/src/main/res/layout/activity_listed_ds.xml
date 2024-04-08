@@ -4,7 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".listedDS">
+    tools:context=".listedDS"
+    android:layout_marginTop="30dp"
+    >
 
 
     <androidx.recyclerview.widget.RecyclerView
