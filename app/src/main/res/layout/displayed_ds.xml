@@ -9,9 +9,11 @@
     >
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="16dp"
         android:orientation="vertical">
 
         <LinearLayout
@@ -87,19 +89,19 @@
                 android:textColor="@color/black"
                 />
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:orientation="horizontal">
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/bookNowBtn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Book Now"
-                />
-        </LinearLayout>
 
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bookNowBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="26dp"
+            android:fontFamily="@font/bangers"
+            android:text="Book Now"
+            android:backgroundTint="@color/purple"
+            app:rippleColor="@color/white"
+            app:strokeColor="@color/purple"
+            />
 
     </LinearLayout>
     
