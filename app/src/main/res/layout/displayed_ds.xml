@@ -87,8 +87,21 @@
                 android:textColor="@color/black"
                 />
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:orientation="horizontal">
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/bookNowBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Book Now"
+                />
+        </LinearLayout>
 
 
     </LinearLayout>
+    
 
 </androidx.cardview.widget.CardView>
