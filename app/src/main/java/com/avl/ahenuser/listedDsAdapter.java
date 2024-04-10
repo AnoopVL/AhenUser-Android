@@ -31,14 +31,10 @@ public class listedDsAdapter extends RecyclerView.Adapter<listedDsAdapter.listed
     @Override
     public void onBindViewHolder(@NonNull listedDsHolder holder, int position) {
 
-//        listedDS listedDrvSch = list.get(position);
         ListedDrivingSchools listedDrivingSchools = list.get(position);
         holder.dsName.setText(listedDrivingSchools.getDsName());
         holder.dsAddress.setText(listedDrivingSchools.getAddress());
         holder.dsPhone.setText(listedDrivingSchools.getPhone());
-//        holder.dsName.setText(listedDS.getDsName());
-//        holder.dsAddress.setText(listedDS.getAddress());
-//        holder.dsPhone.setText(listedDS.getPhone());
     }
 
     @Override

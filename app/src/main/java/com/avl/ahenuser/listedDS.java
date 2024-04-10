@@ -56,7 +56,6 @@ public class listedDS extends AppCompatActivity {
                 }
                 listedDsAdapter.notifyDataSetChanged();
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
