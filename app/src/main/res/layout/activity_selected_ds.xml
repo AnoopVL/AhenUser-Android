@@ -97,6 +97,125 @@
             />
     </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:orientation="horizontal"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/chau_philomene_one"
+                    android:text="Phone: "
+                    android:textColor="@color/black"
+                    android:textSize="26dp" />
+                <TextView
+                    android:id="@+id/dsPhoneInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="DS_Phone"
+                    android:textSize="22dp"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:orientation="horizontal"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/chau_philomene_one"
+                    android:text="Email: "
+                    android:textColor="@color/black"
+                    android:textSize="26dp" />
+                <TextView
+                    android:id="@+id/dsEmailInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="DS_Email"
+                    android:textSize="22dp"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:orientation="horizontal"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/chau_philomene_one"
+                    android:text="Your Name: "
+                    android:textColor="@color/black"
+                    android:textSize="26dp" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/userName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter your Name"
+                    style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox"
+                    app:boxStrokeColor="@color/black"
+                    android:outlineAmbientShadowColor="@color/black"
+                    app:hintTextColor="@color/black"
+                    android:textSize="22dp"
+                    android:inputType="text"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:orientation="horizontal"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/chau_philomene_one"
+                    android:text="Your Name: "
+                    android:textColor="@color/black"
+                    android:textSize="26dp" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/userPhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter Phone No."
+                    style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox"
+                    app:boxStrokeColor="@color/black"
+                    android:outlineAmbientShadowColor="@color/black"
+                    app:hintTextColor="@color/black"
+                    android:textSize="22dp"
+                    android:inputType="number"
+                    />
+            </LinearLayout>
+
+
+
+
+
+
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
