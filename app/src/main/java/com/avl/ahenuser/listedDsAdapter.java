@@ -42,6 +42,10 @@ public class listedDsAdapter extends RecyclerView.Adapter<listedDsAdapter.listed
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, selectedDS.class);
+                intent.putExtra("dsName", listedDrivingSchools.getDsName());
+                intent.putExtra("dsAddress", listedDrivingSchools.getAddress());
+                intent.putExtra("dsPhone", listedDrivingSchools.getPhone());
+                intent.putExtra("dsEmail", listedDrivingSchools.getEmail());
                 context.startActivity(intent);
             }
         });

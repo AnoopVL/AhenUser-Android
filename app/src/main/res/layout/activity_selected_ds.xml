@@ -17,8 +17,9 @@
         android:layout_marginRight="10dp"
         app:cardCornerRadius="16dp"
         android:paddingTop="16dp"
+        android:layout_marginTop="24dp"
         app:cardBackgroundColor="@color/transparent_purple"
-        >
+        app:strokeColor="@color/white">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -164,6 +165,7 @@
         android:layout_marginRight="10dp"
         app:cardCornerRadius="16dp"
         app:cardBackgroundColor="@color/transparent_purple"
+        app:strokeColor="@color/white"
         >
         <LinearLayout
             android:layout_width="match_parent"

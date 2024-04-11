@@ -8,6 +8,7 @@ import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -19,6 +20,8 @@ import androidx.core.view.WindowInsetsCompat;
 import java.util.ArrayList;
 
 public class selectedDS extends AppCompatActivity {
+
+    private TextView dsNameInfo, dsAddressInfo, dsPhoneInfo, dsEmailInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +41,6 @@ public class selectedDS extends AppCompatActivity {
                 String item = parent.getItemAtPosition(position).toString();
                 Toast.makeText(selectedDS.this, "You've selected Time Slot of: "+item, Toast.LENGTH_SHORT).show();
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
@@ -55,5 +57,21 @@ public class selectedDS extends AppCompatActivity {
         ArrayAdapter<String>adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, arrayList);
         adapter.setDropDownViewResource(android.R.layout.select_dialog_singlechoice);
         spinner.setAdapter(adapter);
+
+        String dsNameInfoStr = getIntent().getStringExtra("dsName");
+        String dsAddressInfoStr = getIntent().getStringExtra("dsAddress");
+        String dsPhoneInfoStr = getIntent().getStringExtra("dsPhone");
+        String dsEmailInfoStr = getIntent().getStringExtra("dsEmail");
+
+        dsNameInfo = findViewById(R.id.dsNameInfo);
+        dsAddressInfo = findViewById(R.id.dsAddressInfo);
+        dsPhoneInfo = findViewById(R.id.dsPhoneInfo);
+        dsEmailInfo = findViewById(R.id.dsEmailInfo);
+
+        dsNameInfo.setText(dsNameInfoStr);
+        dsAddressInfo.setText(dsAddressInfoStr);
+        dsPhoneInfo.setText(dsPhoneInfoStr);
+        dsEmailInfo.setText(dsEmailInfoStr);
     }
+
 }
