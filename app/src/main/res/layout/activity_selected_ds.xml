@@ -17,6 +17,7 @@
         android:layout_marginRight="10dp"
         app:cardCornerRadius="16dp"
         android:paddingTop="16dp"
+        app:cardBackgroundColor="@color/transparent_purple"
         >
 
         <LinearLayout
@@ -68,6 +69,7 @@
             android:layout_height="wrap_content"
             android:text="DS_Name"
             android:textSize="22dp"
+            android:textColor="@color/black"
             tools:ignore="DuplicateIds" />
     </LinearLayout>
 
@@ -94,6 +96,7 @@
             android:layout_height="wrap_content"
             android:text="DS_Address"
             android:textSize="22dp"
+            android:textColor="@color/black"
             />
     </LinearLayout>
 
@@ -120,6 +123,7 @@
                     android:layout_height="wrap_content"
                     android:text="DS_Phone"
                     android:textSize="22dp"
+                    android:textColor="@color/black"
                     />
             </LinearLayout>
 
@@ -146,9 +150,28 @@
                     android:layout_height="wrap_content"
                     android:text="DS_Email"
                     android:textSize="22dp"
+                    android:textColor="@color/black"
                     />
             </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        app:cardCornerRadius="16dp"
+        app:cardBackgroundColor="@color/transparent_purple"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="10dp"
+            android:paddingBottom="16dp"
+            >
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -211,13 +234,48 @@
                     />
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:orientation="horizontal"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/chau_philomene_one"
+                    android:text="Time Slot: "
+                    android:textColor="@color/black"
+                    android:textSize="26dp" />
+                <Spinner
+                    android:id="@+id/timeSlotSpnr"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginBottom="8dp"
+                    />
+            </LinearLayout>
 
-
-
-
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/bookNowBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:text="Book Now !!"
+                android:fontFamily="@font/bungee"
+                android:textSize="20dp"
+                android:backgroundTint="@color/transparent_purple"
+                app:rippleColor="@color/white"
+                />
 
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
 
 
