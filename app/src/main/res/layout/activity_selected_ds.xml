@@ -192,7 +192,7 @@
                     android:textColor="@color/black"
                     android:textSize="26dp" />
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/userName"
+                    android:id="@+id/userNameInput"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:hint="Enter your Name"
@@ -219,11 +219,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/chau_philomene_one"
-                    android:text="Your Name: "
+                    android:text="Your Phone: "
                     android:textColor="@color/black"
                     android:textSize="26dp" />
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/userPhone"
+                    android:id="@+id/userPhoneInput"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:hint="Enter Phone No."

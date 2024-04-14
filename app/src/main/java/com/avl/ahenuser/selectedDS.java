@@ -19,13 +19,15 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
 public class selectedDS extends AppCompatActivity {
 
     private TextView dsNameInfo, dsAddressInfo, dsPhoneInfo, dsEmailInfo;
-    private TextInputEditText userName, userPhone;
+//    private TextInputEditText userName, userPhone;
     private MaterialButton bookNowBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,9 @@ public class selectedDS extends AppCompatActivity {
             // Set the status bar color to transparent
             window.setStatusBarColor(Color.TRANSPARENT);
         }
+        TextInputEditText userNameInput = findViewById(R.id.userNameInput);
+        TextInputEditText userPhoneInput = findViewById(R.id.userPhoneInput);
+        bookNowBtn = findViewById(R.id.bookNowBtn);
         Spinner spinner = findViewById(R.id.timeSlotSpnr);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -76,6 +81,25 @@ public class selectedDS extends AppCompatActivity {
         dsAddressInfo.setText(dsAddressInfoStr);
         dsPhoneInfo.setText(dsPhoneInfoStr);
         dsEmailInfo.setText(dsEmailInfoStr);
+
+        bookNowBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String dsName = dsNameInfoStr;
+                String userName = userNameInput.getText().toString();
+                String userPhone = userPhoneInput.getText().toString();
+                String timeSlot = spinner.getSelectedItem().toString();
+
+                BookingRequests bookingRequests = new BookingRequests(dsName, userName, userPhone, timeSlot);
+                DatabaseReference bookingRef = FirebaseDatabase.getInstance().getReference("requests");
+                String key = bookingRef.push().getKey();
+                bookingRef.child(key).setValue(bookingRequests);
+
+                Toast.makeText(selectedDS.this, "Session Booking request sent!! Please wait for approval", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
     }
 
 }
