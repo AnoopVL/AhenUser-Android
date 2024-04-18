@@ -1,30 +1,32 @@
 package com.avl.ahenuser;
 
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class HistoryFragment extends Fragment {
-    private LinearLayout bookingRequestContainer;
-    private TextView noHistoryText;
-    private List<BookingRequests> bookingRequests;
 
+    private DatabaseReference mDatabase;
+    private FirebaseAuth mAuth;
+    private String userPhone;
+    private RecyclerView recyclerView;
+    private TextView noHistoryText;
+    private HistoryAdapter adapter;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -69,29 +71,39 @@ public class HistoryFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_history, container, false);
+        View view = inflater.inflate(R.layout.fragment_history, container, false);
+        mAuth = FirebaseAuth.getInstance();
+        userPhone = mAuth.getCurrentUser().getPhoneNumber(); // Assuming phone number is used for authentication
+        mDatabase = FirebaseDatabase.getInstance().getReference();
 
-        bookingRequestContainer = rootView.findViewById(R.id.bookingRequestContainer);
-        noHistoryText = rootView.findViewById(R.id.noHistoryText);
-        bookingRequests = new ArrayList<>();
+        recyclerView = view.findViewById(R.id.bookingRequestContainer);
+        noHistoryText = view.findViewById(R.id.noHistoryText);
 
-        // Access user ID (replace with your method to get the user ID)
-//        String userId = /* get user ID */;
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        adapter = new HistoryAdapter();
+        recyclerView.setAdapter(adapter);
 
-        // Firebase Database reference
-        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference().child("users").child("phone");
+        fetchBookingHistory();
 
-        userRef.addValueEventListener(new ValueEventListener() {
+        return view;
+    }
+    private void fetchBookingHistory() {
+        Query query = mDatabase.child("requests").orderByChild("userPhone").equalTo(userPhone);
+        query.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                // Get a list of booking request IDs associated with the user (if present)
-                List<String> bookingRequestIds = (List<String>) snapshot.child("bookingRequestIds").getValue();
-                if (bookingRequestIds != null && !bookingRequestIds.isEmpty()) {
-                    // Fetch details of each booking request using the IDs
-                    fetchBookingRequestDetails(bookingRequestIds);
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                List<Booking> bookings = new ArrayList<>();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Booking booking = snapshot.getValue(Booking.class);
+                    bookings.add(booking);
+                }
+                if (bookings.isEmpty()) {
+                    noHistoryText.setVisibility(View.VISIBLE);
+                    recyclerView.setVisibility(View.GONE);
                 } else {
-                    // No booking history found
-                    showNoHistoryText();
+                    noHistoryText.setVisibility(View.GONE);
+                    recyclerView.setVisibility(View.VISIBLE);
+                    adapter.setBookings(bookings);
                 }
             }
 
@@ -99,52 +111,7 @@ public class HistoryFragment extends Fragment {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        });
-        return rootView;
+        })
+
     }
-    private void addBookingRequestView(BookingRequests bookingRequest) {
-        // Inflate the layout for the booking request item
-        View bookingItemView = LayoutInflater.from(getContext()).inflate(R.layout.booking_request_item, bookingRequestContainer, false);
-
-        // Get references to TextViews within the booking item layout
-        TextView drivingSchoolName = bookingItemView.findViewById(R.id.drivingSchoolName);
-        TextView timeSlot = bookingItemView.findViewById(R.id.timeSlot);
-        TextView status = bookingItemView.findViewById(R.id.status);
-
-        // Set text values for each TextView based on booking request data
-        getDrivingSchoolName(bookingRequest.getDsName(), drivingSchoolName); // Asynchronous name retrieval
-
-        timeSlot.setText(bookingRequest.getTimeSlot());
-        status.setText(bookingRequest.getStatus());
-
-        // Add the inflated view as a child to the bookingRequestContainer
-        bookingRequestContainer.addView(bookingItemView);
-    }
-    private void showNoHistoryText() {
-        bookingRequestContainer.setVisibility(View.GONE);
-        noHistoryText.setVisibility(View.VISIBLE);
-    }
-    private void getDrivingSchoolName(String drivingSchoolName, final TextView drivingSchoolNameTextView) {
-        // Access driving schools node
-        DatabaseReference drivingSchoolsRef = FirebaseDatabase.getInstance().getReference().child("drivingSchool");
-
-        // Perform a single value event to get the driving school data
-        drivingSchoolsRef.child(drivingSchoolName).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()) {
-                    String name = (String) dataSnapshot.child("name").getValue();
-                    drivingSchoolNameTextView.setText(name); // Update UI with retrieved name
-                } else {
-                    drivingSchoolNameTextView.setText("Driving School N/A"); // Handle case where driving school data is missing
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // Handle database errors
-            }
-        });
-    }
-
 }
