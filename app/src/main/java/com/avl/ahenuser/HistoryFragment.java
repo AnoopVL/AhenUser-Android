@@ -24,9 +24,9 @@ public class HistoryFragment extends Fragment {
     private DatabaseReference mDatabase;
     private FirebaseAuth mAuth;
     private String userPhone;
-    private RecyclerView recyclerView;
+//    private RecyclerView recyclerView;
     private TextView noHistoryText;
-    private HistoryAdapter adapter;
+//    private HistoryAdapter adapter;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -76,11 +76,11 @@ public class HistoryFragment extends Fragment {
         userPhone = mAuth.getCurrentUser().getPhoneNumber(); // Assuming phone number is used for authentication
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
-        recyclerView = view.findViewById(R.id.bookingRequestContainer);
+        RecyclerView recyclerView = view.findViewById(R.id.bookingRequestContainer);
         noHistoryText = view.findViewById(R.id.noHistoryText);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new HistoryAdapter();
+        HistoryAdapter adapter = new HistoryAdapter();
         recyclerView.setAdapter(adapter);
 
         fetchBookingHistory();
