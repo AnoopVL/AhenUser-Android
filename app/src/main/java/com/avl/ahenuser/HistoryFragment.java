@@ -1,5 +1,6 @@
 package com.avl.ahenuser;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,15 +21,16 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class HistoryFragment extends Fragment {
 
     private DatabaseReference mDatabase;
     private FirebaseAuth mAuth;
     private String userPhone;
-//    private RecyclerView recyclerView;
+    private RecyclerView recyclerView;
     private TextView noHistoryText;
-//    private HistoryAdapter adapter;
+    private HistoryAdapter adapter;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -70,6 +72,7 @@ public class HistoryFragment extends Fragment {
         }
     }
 
+    @SuppressLint("WrongViewCast")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -78,11 +81,12 @@ public class HistoryFragment extends Fragment {
         userPhone = mAuth.getCurrentUser().getPhoneNumber(); // Assuming phone number is used for authentication
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
-        RecyclerView recyclerView = view.findViewById(R.id.bookingRequestContainer);
+        recyclerView = view.findViewById(R.id.bookingRequestContainer);
         noHistoryText = view.findViewById(R.id.noHistoryText);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        HistoryAdapter adapter = new HistoryAdapter();
+//        List<BookingRequests> bookings = null;
+        adapter = new HistoryAdapter(getContext(), new ArrayList<>());
         recyclerView.setAdapter(adapter);
 
         fetchBookingHistory();
@@ -94,9 +98,9 @@ public class HistoryFragment extends Fragment {
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                List<Booking> bookings = new ArrayList<>();
+                List<BookingRequests> bookings = new ArrayList<>();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Booking booking = snapshot.getValue(Booking.class);
+                    BookingRequests booking = snapshot.getValue(BookingRequests.class);
                     bookings.add(booking);
                 }
                 if (bookings.isEmpty()) {
@@ -113,7 +117,7 @@ public class HistoryFragment extends Fragment {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        })
+        });
 
     }
 }

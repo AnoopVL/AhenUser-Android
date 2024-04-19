@@ -1,6 +1,7 @@
 package com.avl.ahenuser;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,8 +9,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.google.firebase.database.core.Context;
 
 import java.util.List;
 
@@ -19,10 +18,13 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
     @SuppressLint("RestrictedApi")
     private Context context;
 
-    public HistoryAdapter(Context context, List<BookingRequests> bookings) {
+    public HistoryAdapter( android.content.Context context, List<BookingRequests> bookings) {
         this.context = context;
         this.bookings = bookings;
     }
+
+
+
 
     public void setBookings(List<BookingRequests> bookings) {
         this.bookings = bookings;
