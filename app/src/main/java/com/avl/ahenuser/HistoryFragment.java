@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -31,6 +34,9 @@ public class HistoryFragment extends Fragment {
     private RecyclerView recyclerView;
     private TextView noHistoryText;
     private HistoryAdapter adapter;
+    private TextInputLayout userPhoneInput;
+
+    private Button searchBtn;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -78,22 +84,35 @@ public class HistoryFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_history, container, false);
         mAuth = FirebaseAuth.getInstance();
-        userPhone = mAuth.getCurrentUser().getPhoneNumber(); // Assuming phone number is used for authentication
+//        userPhone = mAuth.getCurrentUser().getPhoneNumber(); // Assuming phone number is used for authentication
+
+
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
-        recyclerView = view.findViewById(R.id.bookingRequestContainer);
+        recyclerView = view.findViewById(R.id.bookingRequestRecyclerView);
         noHistoryText = view.findViewById(R.id.noHistoryText);
+        userPhoneInput = view.findViewById(R.id.userPhoneInput);
+        searchBtn = view.findViewById(R.id.searchBtn);
+
+        userPhone = userPhoneInput.getEditText().getText().toString();
+//        userPhone = "8956739803";
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-//        List<BookingRequests> bookings = null;
+        List<BookingRequests> bookings = null;
         adapter = new HistoryAdapter(getContext(), new ArrayList<>());
         recyclerView.setAdapter(adapter);
-
-        fetchBookingHistory();
+        searchBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String userPhoneStr = userPhoneInput.getEditText().getText().toString();
+                fetchBookingHistory(userPhoneStr);
+            }
+        });
 
         return view;
+
     }
-    private void fetchBookingHistory() {
+    private void fetchBookingHistory(String userPhone) {
         Query query = mDatabase.child("requests").orderByChild("userPhone").equalTo(userPhone);
         query.addValueEventListener(new ValueEventListener() {
             @Override
