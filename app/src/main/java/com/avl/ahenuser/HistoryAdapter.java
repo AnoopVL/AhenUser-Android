@@ -23,9 +23,6 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
         this.bookings = bookings;
     }
 
-
-
-
     public void setBookings(List<BookingRequests> bookings) {
         this.bookings = bookings;
         notifyDataSetChanged();
