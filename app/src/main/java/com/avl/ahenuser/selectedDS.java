@@ -90,9 +90,9 @@ public class selectedDS extends AppCompatActivity {
                 String userPhone = userPhoneInput.getText().toString();
                 String timeSlot = spinner.getSelectedItem().toString();
 
-                BookingRequests bookingRequests = new BookingRequests(dsName, userName, userPhone, timeSlot);
                 DatabaseReference bookingRef = FirebaseDatabase.getInstance().getReference("requests");
                 String key = bookingRef.push().getKey();
+                BookingRequests bookingRequests = new BookingRequests(key, dsName, userName, userPhone, timeSlot);
                 bookingRef.child(key).setValue(bookingRequests);
 
                 Toast.makeText(selectedDS.this, "Session Booking request sent!! Please wait for approval", Toast.LENGTH_SHORT).show();

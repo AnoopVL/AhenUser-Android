@@ -6,17 +6,28 @@ public class BookingRequests {
     private String userPhone;
     private String timeSlot;
     private String status; // Can be "pending", "accepted", or "rejected"
+    private String requestId;
 
     public BookingRequests() {
         // Default constructor
     }
 
-    public BookingRequests(String dsName, String userName, String userPhone, String timeSlot) {
+
+    public BookingRequests(String requestId, String dsName, String userName, String userPhone, String timeSlot) {
+        this.requestId = requestId;
         this.dsName = dsName;
         this.userName = userName;
         this.userPhone = userPhone;
         this.timeSlot = timeSlot;
         this.status = "pending"; // Set initial status as pending
+    }
+
+    public String getRequestId() {
+        return requestId;
+    }
+
+    public void setRequestId(String requestId) {
+        this.requestId = requestId;
     }
 
     public String getDsName() {

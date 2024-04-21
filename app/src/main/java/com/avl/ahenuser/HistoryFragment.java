@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -105,12 +106,16 @@ public class HistoryFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 String userPhoneStr = userPhoneInput.getEditText().getText().toString();
-                fetchBookingHistory(userPhoneStr);
+                if (!userPhoneStr.isEmpty()) {
+                    fetchBookingHistory(userPhoneStr);
+                } else {
+                    // Show message to enter user phone number
+                    Toast.makeText(getContext(), "Please enter user phone number", Toast.LENGTH_SHORT).show();
+                }
+//                fetchBookingHistory(userPhoneStr);
             }
         });
-
         return view;
-
     }
     private void fetchBookingHistory(String userPhone) {
         Query query = mDatabase.child("requests").orderByChild("userPhone").equalTo(userPhone);
@@ -131,12 +136,9 @@ public class HistoryFragment extends Fragment {
                     adapter.setBookings(bookings);
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
-
     }
 }
