@@ -5,6 +5,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -50,17 +51,25 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
         TextView drivingSchoolName;
         TextView timeSlot;
         TextView status;
+        Button payNow;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             drivingSchoolName = itemView.findViewById(R.id.drivingSchoolName);
             timeSlot = itemView.findViewById(R.id.timeSlot);
             status = itemView.findViewById(R.id.status);
+            payNow = itemView.findViewById(R.id.payNow);
         }
         public void bind(BookingRequests booking) {
             drivingSchoolName.setText(booking.getDsName());
-            timeSlot.setText("Time Slot: " + booking.getTimeSlot());
-            status.setText("Status: " + booking.getStatus());
+            timeSlot.setText(booking.getTimeSlot());
+            status.setText(booking.getStatus());
+
+            if (booking.getStatus().equalsIgnoreCase("accepted")) {
+                payNow.setVisibility(View.VISIBLE);
+            } else {
+                payNow.setVisibility(View.GONE);
+            }
         }
     }
 }

@@ -85,8 +85,6 @@ public class HistoryFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_history, container, false);
         mAuth = FirebaseAuth.getInstance();
-//        userPhone = mAuth.getCurrentUser().getPhoneNumber(); // Assuming phone number is used for authentication
-
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
@@ -109,10 +107,8 @@ public class HistoryFragment extends Fragment {
                 if (!userPhoneStr.isEmpty()) {
                     fetchBookingHistory(userPhoneStr);
                 } else {
-                    // Show message to enter user phone number
                     Toast.makeText(getContext(), "Please enter user phone number", Toast.LENGTH_SHORT).show();
                 }
-//                fetchBookingHistory(userPhoneStr);
             }
         });
         return view;
