@@ -56,12 +56,12 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
 
     @Override
     public void onPaymentSuccess(String s) {
-
+        Toast.makeText(context, "Payment was successful!", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onPaymentError(int i, String s) {
-
+        Toast.makeText(context, "Payment failed try again!", Toast.LENGTH_SHORT).show();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
