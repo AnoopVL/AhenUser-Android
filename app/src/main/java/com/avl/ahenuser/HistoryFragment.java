@@ -37,6 +37,8 @@ public class HistoryFragment extends Fragment {
     private HistoryAdapter adapter;
     private TextInputLayout userPhoneInput;
 
+
+
     private Button searchBtn;
 
     // TODO: Rename parameter arguments, choose names that match
