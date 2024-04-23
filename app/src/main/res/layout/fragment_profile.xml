@@ -38,18 +38,6 @@
                 android:textColor="@color/white"
                 android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/phone_textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/fullName_textView"
-                android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@+id/profile_img"
-                android:includeFontPadding="false"
-                android:text="User_name"
-                android:textColor="@color/white"
-                android:textSize="14sp" />
-
             <Button
                 android:id="@+id/sign_out"
                 android:layout_width="135dp"
@@ -191,7 +179,6 @@
                     android:drawablePadding="10dp"
                      />
 
-
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -227,36 +214,7 @@
                     android:drawablePadding="10dp"
                      />
 
-
             </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/password_TextInputLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:hint="Password"
-                app:passwordToggleEnabled="true"
-                >
-                <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/password_edittext"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/password_small_icon"
-                    android:drawablePadding="10dp"/>
-<!--                    android:inputType="textPassword"-->
-
-
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <Button
-                android:id="@+id/updateButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#6750A3"
-                android:fontFamily="@font/bungee"
-                android:text="Update" />
 
         </LinearLayout>
 
