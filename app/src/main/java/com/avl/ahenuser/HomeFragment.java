@@ -71,6 +71,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 
         // Find views by their IDs
         searchNowButton = view.findViewById(R.id.search_now);
+//        findNowButton = view.findViewById(R.id.findNow);
         findNowButton = view.findViewById(R.id.findNow);
         book2Button = view.findViewById(R.id.book2);
         book3Button = view.findViewById(R.id.book3);
@@ -93,10 +94,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         } else if (v.getId() == R.id.findNow) {
             Intent intent = new Intent(getActivity(), listedDS.class);
             startActivity(intent);
-
-//            Toast.makeText(getActivity(), "Feature coming soon!!", Toast.LENGTH_SHORT).show();
         } else if (v.getId() == R.id.book2) {
-
+            Toast.makeText(getActivity(), "Feature coming soon!!", Toast.LENGTH_SHORT).show();
         } else if (v.getId() == R.id.book3) {
             Toast.makeText(getActivity(), "Feature coming soon!!", Toast.LENGTH_SHORT).show();
         }
